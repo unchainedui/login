@@ -1,0 +1,117 @@
+@import 'uc-input-field/style.css';
+@import './button.css';
+
+$login-color: $uiLoginColor;
+$login-accent: $uiLoginAccent;
+$login-background: $uiLoginBackground;
+$login-backdrop-color: $uiLoginBackdropColor;
+$login-backdrop-filter: $uiLoginBackdropFilter;
+$login-fadein: $uiLoginFadeIn;
+$login-fadeout: $uiLoginFadeOut;
+
+.login {
+  font-size: 1em;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  color: $login-color;
+  background-color: $login-backdrop-color;
+  backdrop-filter: $login-backdrop-filter;
+
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    visibility 0s linear $login-fadeout,
+    all $login-fadeout $uiBaseTransition $login-fadeout;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    transition:
+      visibility 0s $uiBaseTransition $login-fadein,
+      all $login-fadein $uiBaseTransition 0s;
+  }
+}
+
+.login-login {
+  .input {
+    font-size: 1.25em;
+    width: 300px;
+    height: calc(3*$uiGrid);
+    color: $login-color;
+    &:before {
+      transition: all 300ms $uiBaseTransition;
+      content: '';
+      position: absolute;
+      top: -$uiGrid;
+      left: calc(-2*$uiGrid);
+      right: calc(-2*$uiGrid);
+      bottom: -$uiGrid;
+      background: $login-background;
+      border-radius: calc(3*$uiGrid);
+      filter: blur(10px);
+      z-index: 0;
+    }
+
+    input {
+      position: relative;
+      height: calc(3*$uiGrid);
+      font-size: 28px;
+      background: $login-background;
+      color: $login-color;
+    }
+
+    input:focus + span,
+    span {
+      color: $login-accent;
+    }
+
+    &.error, &.input-message {
+      input,
+      &:before {
+        background: $uiErrorColor;
+      }
+    }
+  }
+}
+
+.login-done {
+  max-width: calc(20*$uiGrid);
+  h2 {
+    font-size: 1.25em;
+    height: calc(3*$uiGrid);
+    margin: 0;
+  }
+}
+
+.login-login,
+.login-done {
+  display: none;
+}
+
+.login-s-login .login-login { display: block; }
+.login-s-done .login-done { display: block; }
+
+.login-close {
+  position: absolute;
+  display: block;
+  width: calc(2*$uiGrid);
+  height: calc(2*$uiGrid);
+  top: $uiGrid;
+  right: $uiGrid;
+  stroke: $uiBgColor;
+  stroke-width: 1px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+

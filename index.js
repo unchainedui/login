@@ -1,4 +1,4 @@
-import isHotkey from 'is-hotkey/src/index.js';
+import isHotkey from 'uc-keys';
 import compose from 'uc-compose';
 import form from 'uc-form';
 import { on, off } from 'uc-dom';

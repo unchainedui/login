@@ -25,10 +25,10 @@
   },
   "homepage": "https://github.com/unchainedui/login#readme",
   "dependencies": {
-    "is-hotkey": "^0.1.3",
     "uc-compose": "^1.0.0",
     "uc-dom": "^1.4.0",
     "uc-icon": "^1.1.0",
+    "uc-keys": "^1.0.0",
     "uc-input-field": "^1.0.0"
   },
   "devDependencies": {

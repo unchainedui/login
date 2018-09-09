@@ -30,7 +30,6 @@ Login.prototype = compose(
   {
     onToken: function(state) {
       app.api.auth.authenticate(state.token, err => {
-        console.log('auth', err);
         if (err) {
           this.show(err);
         }

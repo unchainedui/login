@@ -1,125 +1,38 @@
 # Unchained UI
 
-## App
+## Login
 
-[![NPM Version](https://img.shields.io/npm/v/uc-app.svg?style=flat-square)](https://www.npmjs.com/package/uc-app)
-[![NPM Downloads](https://img.shields.io/npm/dt/uc-app.svg?style=flat-square)](https://www.npmjs.com/package/uc-app)
+[![NPM Version](https://img.shields.io/npm/v/uc-login.svg?style=flat-square)](https://www.npmjs.com/package/uc-login)
+[![NPM Downloads](https://img.shields.io/npm/dt/uc-login.svg?style=flat-square)](https://www.npmjs.com/package/uc-login)
 
-Simple yet powerful application class for a browser.
+Login screen
 
 ### Usage
 
 ```js
-import app from 'uc-app';
+import Login from 'uc-login';
 
-app.init({ container: 'body' }, () => {
-  // here is your app is ready
-  // this will start the router
-  app.start();
+const login = new Login({
+  container: document.body,
+  hotkey: 'ctrl+l'
 });
 
 ```
 
-### API
+Default options are used in the example above.
 
-You can use any API adapter.
+**The api in the app must have auth controller.**
 
-```js
-app.api(adapter);
-```
 
-The adapter should complain interface:
+### Methods
 
-* call() - makes the api call.
-* app() - gives your adapter access to the app instance.
-* host — string, is the full api host name.
+#### show([err])
 
-The app will add following methods to your adapter:
+Show the login screen. If `err` is provide the `err.message` will be shown.
 
-* log(level, ...args) — to log.
-* emit(event, ...args) — to emit events.
+#### hide()
 
-### Router
-
-`app.router`
-
-For more info go to [uc-router](https://github.com/unchainedui/router)
-
-#### routes(routes)
-
-Adds all the `routes` to the router.
-
-#### go(url[, state])
-
-Navigates to the `url`. Alias to `router.go`.
-
-### DOM
-
-For more info on following methods go to [uc-dom](https://github.com/unchainedui/dom)
-
-* addClass
-* removeClass
-* toggleClass
-* replaceClass
-* appendTo
-* prependTo
-* insertBefore
-* insertAfter
-* find
-* attr
-
-### Events
-
-#### on(event, handler[, context])
-
-Adds the event `handler` to the `event`. You can use `context` to set `this` context for the handler. Returns the class instance so you can chain the calls.
-
-#### once(event, handler[, context])
-
-Same as the above but fires only once.
-
-#### off(event, handler[, context])
-
-Removes the event `handler` to the `event`. You should pass the `context` if you subscribed to the event with context. Returns the class instance so you can chain the calls.
-
-#### emit(event, ...args)
-
-Emits the event
-
-### Log
-
-#### log(level, ...args)
-
-Logs all `args` into console if `level` is smaller than `logLevel` property of the class.
-
-### Properties
-
-* **logLevel** - number, defines the maximum log level to be printed out
-* **logName** - string, if defined will be prepended to every log line
-
-#### Log levels
-
-```js
-const LOG_LEVEL = {
-  NONE: 0,
-  ALERT: 1,
-  CRITICAL: 2,
-  ERROR: 3,
-  WARNING: 4,
-  NOTICE: 5,
-  INFO: 6,
-  DEBUG: 7,
-  ALL: 255
-}
-```
-
-### Storage
-
-`app.storage` — JSON local storage [uc-storage](https://github.com/unchainedui/storage)
-
-### Cookie
-
-`app.cookie` — access to the cookies [uc-cookies](https://github.com/unchainedui/cookie)
+Hides the login screen.
 
 License MIT
 

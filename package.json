@@ -29,6 +29,7 @@
     "uc-dom": "^1.4.0",
     "uc-icon": "^1.1.0",
     "uc-keys": "^1.0.0",
+    "uc-form": "^1.0.0",
     "uc-input-field": "^1.0.0"
   },
   "devDependencies": {
